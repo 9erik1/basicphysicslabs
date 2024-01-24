@@ -1,0 +1,295 @@
+# Basic Physics Labs
+
+1st Edition, Mar 23 2023 <br>
+*Erik Weiss*
+
+This is a quick, informal guide to the core aspects of doing beginner-level physics labs. The goal is to get people up to speed quickly on how to prepare for labs, do them efficiently, then report meaningful results and conclusions. The guide favours simplicity over completeness so that beginners can jump right in and get moving with a basic workflow model. Annotations and technical caveats are mostly absent here.
+
+ - **Required Knowledge:** For most of this guide, the reader only needs to know some basic math functions like the absolute value function $|x|$ and trigonometric functions $\sin(x)$, $\cos(x)$, etc. Basic differential calculus is only used in the parts of Sections 1.3 and 2.3 that describe errors of functions.
+
+**Read Section 0 for how to cite this work**. To get started with labs quick, read Section 1 for a quick set of key aspects and instructions that will get you through a lab. Section 2 will elaborate on any concepts you don't understand there (it's basically a more detailed copy of Section 1). Section 3 contains some casual philosophy/rambling on the subject matter, for those who care for some crude commentary.
+
+**CONTENTS**
+
+- 0 ~ How to Cite this Work <br>
+- 1 ~ Quick Start <br>
+    - 1.0 ~ Notation <br>
+    - 1.1 ~ Preparing for Labs <br>
+    - 1.2 ~ Obtaining & Discussing Results <br>
+        - 1.2.0 ~ Qualities <br>
+        - 1.2.1 ~ Quantities <br>
+        - 1.2.2 ~ Relationships <br>
+    - 1.3 ~ Error Analysis Equations
+    - 1.4 ~ Writing Your Conclusion
+- 2 ~ Elaboration <br>
+    - 2.0 ~ Notation <br>
+    - 2.1 ~ Preparing for Labs <br>
+    - 2.2 ~ Obtaining & Discussing Results <br>
+        - 2.2.0 ~ Qualities <br>
+        - 2.2.1 ~ Quantities <br>
+        - 2.2.2 ~ Relationships
+    - 2.3 ~ Error Analysis Equations
+    - 2.4 ~ Writing Your Conclusion
+- 3 ~ Philosophy & Rambling <br>
+    - 3.1 ~ What? <br>
+    - 3.2 ~ Why? <br>
+    - 3.3 ~ How? <br>
+
+# 0 ~ How to Cite this Work
+
+Please cite this guide as: 
+
+Erik Weiss, *Basic Physics Labs 1st Edition*. March 13, 2023. (URL here) [Accessed YYYY-MM-DD]
+
+# 1 ~ Quick Start
+
+If you already know the most basic stuff about physics labs, or you just feel that life's too short to RTFM (read the <> manual), here's some fast tips. **If you don't understand what's going on in this section, reference Section 2 as needed**.  <br>
+
+## 1.0 ~ Notation
+
+**Quantities & Errors:** *Measured* quantities are given as $Q \pm \delta Q$, where $Q$ is the value and $\delta Q \geq 0$ is the absolute error. 
+
+- $R_Q$ denotes the relative error $\dfrac{\delta Q}{|Q|}$. <br>
+ <br>
+- $O$ will refer to an ***observed*** quantity and $E$ to a corresponding ***expected*** quantity. The idea is that you measure some quantity and get $O \pm \delta O$, then compare your result to some theoretically predicted or previously measured result $E \pm \delta E$.
+
+**Deviations:** The ***absolute deviation*** is $\mathbb{A} \equiv |O-E|$ and the ***relative (percent) deviation*** is $\mathbb{R} \equiv \dfrac{\mathbb{A}}{|E|}$. Two quick comments on these: <br>
+
+- Don't confuse $\mathbb{R}$ with $R_\mathbb{A} = \dfrac{\delta \mathbb{A}}{\mathbb{A}} = \dfrac{\delta O + \delta E}{|O - E|}$. Both of these are important (see Section 1.2). <br>
+ <br>
+- We typically don't consider the error of $\mathbb{R}$ (i.e. we don't calculate or use $\delta \mathbb{R}$ or $R_\mathbb{R}$). See Section 2.0 for details.
+
+**Data Fitting:** $P$ will refer to a ***fit parameter*** from fitting a function to data, and $G$ will refer to a ***goodness-of-fit (GOF) measure***. 
+
+## 1.1 ~ Preparing for Labs
+
+Generally speaking you'll be expected to know what you're doing when you walk into the lab. If you have no experience with physics labs, below are some tips to help you prepare and avoid disaster. See Section 2.1 for examples.
+
+- **Make a list** of all the target quantities, qualities and relationships your lab manual asks you to describe/measure/verify/whatever. Take note of the relevant manual sections that ask for these targets. You should be able to do this without having to understand any theory or how your equipment works. <br>
+<br>
+- **Figure out what the key targets are** (i.e. the ones you'll report in your conclusion). There's no formula for doing this, but it usually involves **understanding the experiment**, common sense and good reasoning. Important targets might be be:
+    - Quantities (including data fit parameters) that relate to the core theme of the lab;
+    - Quantities you compare to an expected value (any $O$ with a corresponding $E$);
+    - GOF measures from data fitting ($G$);
+    - Interesting qualitative results. <br>
+    
+    See section 1.4 for more details on writing a conclusion.
+<br>
+- If you aren't able to practice with the equipment before hand, go over your lab manual and **at least *qualitatively* describe** (write it down!) how the equipment is used to make the measurements, and how the theory relates to any calculations you do with them (if at all). **The more specific and *quantitative* you can be, the less stressed out you'll be in the lab**. <br>
+<br>
+- Data quality guides how you discuss your results, so **try to get an idea of what your data quality will be like, given your equipment and what you're measuring**. For example, try to give yourself a rough estimate of $R_O$ for your various measurements: 1-10%? 20-50%? 50-100%?.  <br>
+<br>
+- If necessary, **make a template for reporting your measurements** (Section 2.0), **results** (Section 1.2) and **error calculations** (Section 1.3). Then you won't be struggling to organize everything in the middle of the lab.  <br>
+<br>
+- Finally, ***ask your lab coordinator or TA if you have any questions about anything mentioned in the above steps***!
+
+## 1.2 ~ Obtaining & Discussing Results
+
+### 1.2.0 ~ Qualities
+
+In some cases you may be asked to **qualitatively** describe something that you see/hear/whatever in the lab. No measurements, just language. Not much to say here other than **be clear**. If you're on a time limit, make sure you understand the theory & equipment behind the experiment you're doing so that you can quickly put your observations into context. 
+
+### 1.2.1 ~ Quantities
+
+**If there's no expectation $E$ for your target $O$** (i.e. you aren't comparing $O$ to anything), then all you need to do is report $O \pm \delta O$, and if necessary discuss the quality of the measurement/calculation ***with regard to the equipment and any underlying data quality***. If $O$ is calculated from other measurements with errors, follow the equations in Section 1.3 to get $\delta O$ or $R_O$ as needed.
+
+**If there *is* an expectation $E$ for $O$** (some theoretically predicted or previously-observed outcome), then you need to compare them and comment on how well your result supports the theory or agrees with the previous observation. In that case, the core procedure is: <br>
+
+- Report $O$ and all other measurements used to calculate it, if not previously reported (see Section 2.0).
+- Calculate $\mathbb{A}$ and $\mathbb{R}$ (Section 1.0) -- these measure ***closeness***. <br>
+- Calculate $R_\mathbb{A}$ (Section 1.0) -- this measures ***consistency***. If $R_\mathbb{A} \geq 1$, then $O$ is consistent with $E$ (they agree to within error). <br>
+- Report $\mathbb{R}$ as a percentage (or if $E=0$, report $\mathbb{A}$), and state whether or $O$ is consistent with $E$. <br>
+- Discuss the closeness and consistency ***with regard to the quality of the data and any underlying theory***. <br>
+<br>
+The last two steps are your results & discussion for that part of the lab. 
+
+See Section 2.2.1 for examples.
+
+### 1.2.2 ~ Relationships
+
+By relationships, I mean a relationship among data in a dataset. We look for relationships by fitting data to a function, which is in essence a relationship between input and output values (i.e. data), then assessing how good the fit is. You typically do the fit using software nowadays.
+
+Once you've fit your data and gotten your fit parameters $P_i \pm \delta P_i$ and goodness-of-fit measure $G \pm \delta G$, the core procedure is:
+
+- Report fit parameters $P_i$ as necessary and calculate any target observables $O \pm \delta O$ from them if needed.
+- Report and comment on $G$ ***with regard to the quality of the data (and the fit parameters if necessary)***. <br>
+<br>
+The second step is your result & discussion for the the purpose of reporting on the relationship. 
+
+See section 2.2.2 for examples.
+
+
+## 1.3 ~ Error Analysis Equations
+
+- **Constant Multiples of Quantities** $X = cQ \longrightarrow \delta X = |c|\delta Q$ and $R_X = R_Q$<br>
+<br>
+- **Powers of Quantities** $X = Q^n \longrightarrow R_X = |n|R_Q$<br>
+<br>
+- **Sum of Quantities** <br>
+    - Two quantities: $X = \pm Q_1 \pm Q_2 \longrightarrow \delta X = \delta Q_1 + \delta Q_2$ <br>
+ <br>
+    - N quantities: $X = \sum_{i=1}^N \pm Q_i \longrightarrow \delta X = \sum_{i=1}^N \delta Q_i$<br>
+<br>
+The $\pm$ symbol indicates that we can add either $+Q_i$ or $-Q_i$ (i.e. subtract $Q_i$) in the sum. Since $\delta (cQ) = |c|\delta Q$, we have $\delta (-Q) = \delta Q$.<br>
+<br>
+- **Product of Quantities** 
+    - Two quantities: $X = Q_1^{\pm 1}Q_2^{\pm 1} \longrightarrow R_{X} = R_{Q_1} + R_{Q_2}$ <br>
+ <br>
+    - N quantities: $X = \prod_{i=1}^N Q_i^{\pm 1} \longrightarrow R_{X} = \sum_{i=1}^N R_{Q_i}$<br>
+<br>
+The power of $\pm 1$ indicates that we can multiply by either $Q_i$ or $1/Q_i$ (i.e. divide by $Q_i$) in the product. Since $R_{Q^n} = |n|R_Q$, we have $R_{Q^{-1}} = R_Q$. <br>
+<br>
+- **Functions of Quantities** <br>
+    - One quantity: $X = f(Q) \longrightarrow \delta X = \left|{\dfrac{\partial f}{\partial Q}}\right|\delta Q$ <br>
+    - N quantities: $X = f(Q_1, Q_2, ..., Q_N) \longrightarrow \delta X = \sum_{i=1}^N \left|\dfrac{\partial f}{\partial Q_i}\right|\delta Q_i$ <br>
+ <br>
+This is the most general formula -- all of the above formulas can be derived from it.
+
+## 1.4 ~ Writing Your Conclusion
+
+Your conclusion summarizes and discusses the primary outcomes of your activities in the lab. How you write it is a matter of personal taste, but generally speaking a good conclusion will:
+- Give a ***very brief*** summary of: 
+    - The experiments you did;
+    - The purpose for doing them;
+    - The key targets related to that purpose (Section 1.1). <br>
+    <br>
+- Report the main outcomes of the experiment (i.e. what your results were for the key targets):
+    - Briefly describe any key qualitative observations (Section 1.2.0);
+    - Report all key quantities as $O \pm \delta O$ (Section 1.2.1);
+    - For quantities $O$ with expected values $E$, **report closeness** ($\mathbb{R}$ as a percentage, Section 1.0) **and  consistency** (whether or not $O$ and $E$ are consistent, Section 1.2.1);
+    - For relationships, **report the goodness of fit** $G \pm \delta G$ (Section 1.2.2). <br>
+     <br>
+- Briefly discuss the the main outcomes:
+    - If there are any inconsistencies between observed and expected results, discuss why (systematic errors, human error, etc);
+    - Comment on quality:
+        - If your precision was low for key targets, what were the limiting factors?
+        - How could these limiting factors be improved?
+
+# 2 ~ Elaboration
+
+## 2.0 ~ Notation
+
+**Quantities & Errors:** If we have some quantity (usually but not always with units), then we report it as $Q \pm \delta Q$. $Q$ is the value of the quantity and $\delta Q$ is the (absolute) error associated with that quantity. Every quantity technically has an error, even if that error is zero. For example, if a number $X$ equals $\sqrt{2}$ *exactly*, then $\delta X = 0$, and so we could write $X = \sqrt{2} \pm 0$. Sometimes it's more informative to compare $\delta Q$ to $Q$ itself; to do this we define the relative error $R_Q \equiv \delta Q/|Q|$. $R_Q$ is often quoted as a percentage, as in the examples below. <br>
+
+- **Be careful:** Often times, a variable will be used in two ways: on its own to report a quantity (giving both the value and error, e.g. like $m = 1.20 \pm 0.05\, \text{kg}$ above), and to represent just the value of that quantity when doing calculations.
+    - **Examples: Reporting Quantities** 
+        - Mass: $m = 1.20 \pm 0.05\, \text{kg} \longrightarrow R_m = \dfrac{0.05\, \text{kg}}{1.20\, \text{kg}} = \dfrac{0.05}{1.20} \approx 0.042 = 4.2\%$ <br>
+    <br>
+        - Charge: $q = (3.54 \pm 0.76)\cdot 10^5\, \text{C} \longrightarrow R_q = \dfrac{0.76\cdot 10^5\, \text{C}}{3.54 \cdot 10^5\, \text{C}} = \dfrac{0.76}{3.54} \approx 0.215 = 21.5\%$
+    - **Example: Doing Calculations**
+        - If we define $r \equiv \dfrac{q}{m}$, then $r = \dfrac{3.54\cdot 10^5 \, \text{C}}{1.20\, \text{kg}} = 2.95 \cdot 10^5 \dfrac{\text{C}}{\text{kg}}$, and $\delta r$ is calculated separately **(see Section 1.3)**.
+    
+    So if $O = 2 \pm 1$ C/kg and $E = 3.5 \pm 0.5$ C/kg, then $\mathbb{R}$ is just $|2-3.5|/3.5 \approx 0.429 = 42.9\%$.
+<br>
+- **Absolute & Relative Errors:** As mentioned above, $\delta Q$ is called the ***absolute* error**. It's called absolute because it's not compared to anything else -- it's just the raw uncertainty on the value of $Q$. But absolute isn't always informative, because you may need to compare it to other things. 
+    - Let's say we make a length measurement to within $1\, \text{mm}$ (i.e. $\delta L = 1\, \text{mm}$). Did we make a good measurement? Well, it depends. If you measured $L = 1\, \text{km}$, then the *real* value of $L$ is within 0.0001% of what you measured and you'd probably feel good about that. But if you measured $L = 0.01\, \text{mm}$, then the *real* length could be as high as $1.01\, \text{mm}$, 101 times higher than what you measured! The point is that big and small are relative terms.
+    - This still doesn't answer the question of whether or not our measurement is good though -- all we've said so far is that lower $R_Q$ is better. Ultimately, what counts as a good value of $R_Q$ is subjective -- it depends on what you want. Having 0.0001% error might sound nice, but if your target accuracy is 10 times lower than that, then 0.0001% is obviously not good.
+    - ***See section 2.3 for more details about "good measurements"***. <br>
+<br>
+- **Observed & Expected Quantities:** As mentioned in Section 1.0, $O$ and $E$ refer to ***observed*** quantities (measured directly or calculated from other measurements) and ***expected*** quantities (predicted by a theory or previously measured). In intro-level physics labs, you're usually trying to validate some existing theory or measurement, so the point of the lab will often be to make some measurement(s) $O$ and compare them to theoretical or previously measured  
+
+**Deviations:** The ***absolute deviation*** is $\mathbb{A} \equiv |O-E|$ and the ***relative (percent) deviation*** is $\mathbb{R} \equiv \dfrac{\mathbb{A}}{|E|}$. Two quick comments on these: <br>
+
+- Don't confuse $\mathbb{R}$ with $R_\mathbb{A} = \dfrac{\delta \mathbb{A}}{\mathbb{A}} = \dfrac{\delta O + \delta E}{|O - E|}$. Both of these are important (see Section 2.2). <br>
+ <br>
+ 
+- We typically don't consider the error of $\mathbb{R}$ (i.e. we don't calculate or use $\delta \mathbb{R}$ or $R_\mathbb{R}$). See Section 2.0 for details. <br>
+<br>
+
+- **Example:**
+    - We measure $O = 51.0 \pm 1.5$ g for a weight which we expect to weigh 50 g ($E = 50 \pm 0$ g). <br>
+    <br>
+    - The absolute deviation is $\mathbb{A} = |(51 \pm 1.5) \text{ g} - (50 \pm 0) \text{ g}| = 1 \pm 1.5$ g. <br> 
+    <br>
+    - The relative deviation is $\mathbb{R} = \dfrac{\mathbb{A}}{|E|} = \dfrac{1 \text{ g}}{50 \text{ g}} = 0.02 = 2\%$ (recall we usually don't quote $\delta\mathbb{R}$).
+
+**Data Fitting:** $P$ will refer to a ***fit parameter*** from fitting a function to data, and $G$ will refer to a ***goodness-of-fit (GOF) measure***. See section 2.2.2 for more details; EXAMPLES TO COME AT A LATER TIME!. 
+
+## 2.2 ~ Obtaining & Discussing Results
+
+### 2.2.0 Qualities
+
+See section 1.2.0.
+
+### 2.2.1 Quantities
+
+In beginner-level labs, you'll typically have to make and report some measurement $O \pm \delta O$ and then compare it to some theoretically predicted or already-well-measured quantity $E \pm \delta E$ in order to (in)validate the theory or measurement. So you get your value $O$ and error $\delta O$. Now what? <br>
+
+- $R_\mathbb{A} \geq 1$ indicates that $O$ is consistent with $E$ (i.e., they **agree to within error**). <br>
+- Lower values of $\mathbb{R}$ mean that $O$ is closer to $E$.<br>
+- **NOTE:** In some cases, $R_E = 0$ or you'll be allowed to treat it as zero (if $E$ a precisely-measured value and you expect $\delta E$ to be much smaller than $\delta O$). In these cases, checking $R_\mathbb{A} \geq 1$ is the same as checking $\mathbb{A} \leq \delta O$ (i.e. that the deviation is within your measurement error).
+
+The problem is that neither $R_\mathbb{A}$ nor $\mathbb{R}$ really indicate the **quality** of the results. A discussion of quality is what makes your results meaningful. Thus, **gauging the quality of your results is the second part of your conclusion.** This is where things get hard, because it's not easy to pin down quality in a precise way. It's a matter of careful reasoning that can often feel arbitrary, and at the end of the day you can never be 100% correct, but you do the best you can. 
+
+- Lower values of $R_E$ and $R_O$ imply higher quality measurements.  <br>
+
+Once you have these in hand, you're ready to make meaningful commentary and conclusions. The general method is as follows: <br>
+- First, determine whether or not $O$ is **consistent** with $E$ by checking if $R_\mathbb{A} \geq 1$ (or $\mathbb{A} \leq \delta O$, if $R_E = 0$).
+- Second, determine **how close** $O$ is to $E$ (by giving $\mathbb{R}$ as a percentage). 
+- Finally, comment on how good the results are. This is the hardest part, because "good" is an arbitrary thing that you can't just determine by a formula. It takes careful reasoning, and at the end of the day, you can never be 100% certain that you're right. Generally speaking though, whatever your reasoning, it will *at least* involve talking about the **quality** of $O$ and $E$, i.e. talking about $R_O$ and $R_E$. You may even need to individually talk about the quality of measurements that you used to calculate $O$.
+
+Let's look at two examples:
+
+- **Example 1:** Your goal is to calculate the acceleration due to gravity, $g_O$, and compare it to the known value $g_E = 9.81 \text{m/s}^2$, treating $\delta g_E$ as zero. You do this by dropping a ball from height $h$, using a stopwatch to measure the time $t$ it takes to hit the ground, then rearranging the formula $h = gt^2$ to get $g$. In essence, you're verifying whether the theory $h = gt^2$ predicts the known value of $g$. You do your measurements and find $R_\mathbb{A} > 1$ (consistency) and $\mathbb{R} = 1.6\%$, but you have $R_O = 50\%$. You conclude that this $\mathbb{R}$ value is really good (i.e. $O$ is very close to $E$), given what you feel is a large measurement error, and that your  measurement is both consistent with the theoretical value. You note that although this supports the the theory (i.e. that $g = h/t^2$ predicts the known value of $g$), the massive relative error on your measurement makes the quality of evidence low. <br>
+<br>
+- **Example 2:** Consider again where $E$ is a theoretical prediction with $R_E = 0$, but now you have $R_\mathbb{A} < 1$ (inconsistency) and $\mathbb{R} = 10\%$ (not as close), with $R_O = 1\%$ (high quality measurement). So now you have a high quality measurement $O$ that is both inconsistent with and pretty far from $E$. Now the discussion becomes complicated by various questions: do other measurements out there support the theory? Are you confident enough in your measurement to say that the theory is wrong? Or are there perhaps systematic errors you might not have accounted for in your measurement $O$? 
+
+### 2.2.2 Relationships (in progress)
+
+There are two basic parts to fitting data: 
+- **Fit Parameters:** These are extra parameters, aside from the data, that define your function. For example, fitting a dataset of $x$ and $y$ values to the function $y = mx + b$ would be a *linear* fit (testing a linear relationship), with fit parameters $m$ and $b$.
+    - The software will usually calculate errors for the fit parameters.
+    - Fit parameters are quantities like in Section 1.2.1; they may be one of your target observables $O$, or be used to calculate a target observable $O$.
+- **Goodness-of-Fit Measures**: After you fit, you need to quantify how good the fit is. These quantities are called goodness-of-fit (GOF) measures. There are many such measures, but one of the most common is the mean squared error (MSE), or its square root (the root MSE or RMSE). 
+    
+    - Usually the software will calculate the GOF measure for you.
+    - If we fit a dataset of $N$ data points $(x_i,y_i)$ to a function $f(x)$, then $MSE \equiv \frac{1}{N}\sum_{i=1}^N (y_i - f(x_i))^2$
+        - Note that the MSE is essentially an average of squared absolute deviations $\mathbb{A}_i^2$, with $O_i = f(x_i)$ and $E_i = y_i$.
+
+The fit parameters and GOF Measures are your results when talking about relationships among data. In some cases, your observed quantity $O$ may be a fit parameter!
+
+For example, Ohm's law $V = IR$ is a *linear relationship* between voltage $V$ and current $I$, with resistance $R$ as the relationship parameter. 
+
+Usually, verifying or testing a relationship means gathering a bunch of data and then fitting it to some function. A function is the same thing as a relationship: for example, (in progress)...
+
+## 2.3 ~ Error Analysis Equations (coming soon)
+
+## 2.4 ~ Writing Your Conclusion (coming soon)
+
+
+# 3 ~ Philosophy & Rambling
+
+## 3.1 ~ What?
+
+In the world of physics, there are two kinds of people: those who make measurements (experimentalists), and those who try to predict how those measurements will turn out (theorists). <br>
+
+- **What exactly is a measurement?** It's a pair of things: a value and an error. It may or may not have units. It can be either directly measured (eg., measuring a table with a ruler), or calculated from an existing theory (eg., measuring two sides of a triangle then calculating the length of the hypotenuse with the Pythagorean Theorem).
+
+Measurements are what we use to validate theories, but one person's measurements aren't necessarily enough. What if the person who made the measurements are lying, or forgot to take something into account when analyzing their measurements? We want some independent verification of other peoples' work, so that we don't have to take one person's word for it. <br>
+
+In intro-level physics labs, **you're learning how to do this verification on a basic level**. Essentially, you're trying to independently verify some predicted or previously-measured quantity or relationship.
+
+On a deeper level, there are two main ideas behind physics labs: skepticism and rigour: 
+
+- **Skepticism:** Ultimately, every theory and claim (including claims of measured values & errors) are subject to **your** tests, **your** measurements, **your** scrutiny, **your** verification. Labs are a formal way of doing all these things. <br>
+- **Rigour:** Of course, you can't just do any experiment and say you verified a theory. If you live in your own world, then sure, you can say whatever you want. But you don't. If you just go around making stuff up, eventually someone will call you out on your BS. Even if people don't call you out directly, they might still realize that you're full of <> and deal with it in other ways, such as not taking you seriously, or even worse, making it known to others that you're full of <> (if it's not already obvious). This process of people calling out each others' BS usually (but not always) results in a high benchmark to qualify as someone who knows what the hell they're talking about. You want to be one of those qualified people.
+
+## 3.2 ~ Why?
+
+So we can tame the chaos of the world and do cool stuff on the side, duh. You aren't on a computer reading this document because legends like Ludwig Boltzmann just made up a bunch of nonsense. Their theories achieved new levels of understanding and gave us new ways to exploit the world for our convenience. 
+
+Sarcasm aside, physics labs are a good exercise in discipline. Learning how to reason about data is humbling, and honing this skill makes you less susceptible to things like having your opinions manipulated by statistics.
+
+## 3.3 ~ How? (in progress)
+
+**This is the good part**. First off, as a caveat to what I said in section 1, obviously you can't verify everything from scratch - nobody has time for that. There's thousands of years of human knowledge out there so you often need to take a few things for granted. So a basic physics lab usually sets you up with a few things to take for granted and use them to verify some basic theories.
+
+• Understand the theory. <br>
+• Understand what you're trying to verify.
+
+*&copy; 2023 Erik Weiss*
+
+
+```python
+
+```
