@@ -121,9 +121,9 @@ See section 2.2.2 for examples.
 
 ## 1.3 ~ Error Analysis Equations
 
-- **Constant Multiples of Quantities** $X = cQ \longrightarrow \delta X = |c|\delta Q$ and $R_X = R_Q$<br>
+- **Constant Multiples of Quantities** $X = cQ \longrightarrow \delta X = |c|\delta Q$ and $R_X = R_Q$ <br>
 <br>
-- **Powers of Quantities** $X = Q^n \longrightarrow R_X = |n|R_Q$<br>
+- **Powers of Quantities** $X = Q^n \longrightarrow R_X = |n|R_Q$ <br>
 <br>
 - **Sum of Quantities** <br>
     - Two quantities: $X = \pm Q_1 \pm Q_2 \longrightarrow \delta X = \delta Q_1 + \delta Q_2$ <br>
@@ -135,7 +135,7 @@ The $\pm$ symbol indicates that we can add either $+Q_i$ or $-Q_i$ (i.e. subtrac
 - **Product of Quantities** 
     - Two quantities: $X = Q_1^{\pm 1}Q_2^{\pm 1} \longrightarrow R_{X} = R_{Q_1} + R_{Q_2}$ <br>
  <br>
-    - N quantities: $X = \prod_{i=1}^N Q_i^{\pm 1} \longrightarrow R_{X} = \sum_{i=1}^N R_{Q_i}$<br>
+    - N quantities: $X = \prod_{i=1}^N Q_i^{\pm 1} \longrightarrow R_{X} = \sum_{i=1}^N R_{Q_i}$ <br>
 <br>
 The power of $\pm 1$ indicates that we can multiply by either $Q_i$ or $1/Q_i$ (i.e. divide by $Q_i$) in the product. Since $R_{Q^n} = |n|R_Q$, we have $R_{Q^{-1}} = R_Q$. <br>
 <br>
